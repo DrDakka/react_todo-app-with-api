@@ -26,41 +26,21 @@ export const Footer: React.FC<Props> = ({
       </span>
 
       <nav className="filter" data-cy="Filter">
-        <a
-          href="#/"
-          onClick={() => setFilter(Filter.All)}
-          className={classNames('filter__link', {
-            selected: filter === Filter.All,
-          })}
-          data-cy="FilterLinkAll"
-        >
-          All
-        </a>
-
-        <a
-          href="#/active"
-          onClick={() => setFilter(Filter.Active)}
-          className={classNames('filter__link', {
-            selected: filter === Filter.Active,
-          })}
-          data-cy="FilterLinkActive"
-        >
-          Active
-        </a>
-
-        <a
-          href="#/completed"
-          onClick={() => setFilter(Filter.Completed)}
-          className={classNames('filter__link', {
-            selected: filter === Filter.Completed,
-          })}
-          data-cy="FilterLinkCompleted"
-        >
-          Completed
-        </a>
+        {Object.values(Filter).map(en => (
+          <a
+            key={en}
+            href={`#/${en.toLowerCase()}`}
+            onClick={() => setFilter(en)}
+            className={classNames('filter__link', {
+              selected: filter === en,
+            })}
+            data-cy={`FilterLink${en}`}
+          >
+            {en}
+          </a>
+        ))}
       </nav>
 
-      {/* this button should be disabled if there are no completed todos */}
       <button
         type="button"
         className="todoapp__clear-completed"

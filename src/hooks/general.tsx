@@ -3,9 +3,9 @@ import { EditableField, Todo } from '../types/Todo';
 import { method, USER_ID } from '../api/todos';
 
 export enum Filter {
-  All = 'all',
-  Active = 'active',
-  Completed = 'completed',
+  All = 'All',
+  Active = 'Active',
+  Completed = 'Completed',
 }
 
 export const useHooks = () => {
