@@ -1,5 +1,6 @@
 import { Filter } from '../../hooks/general';
 import { Todo } from '../../types/Todo';
+import classNames from 'classnames';
 
 type Props = {
   filter: string;
@@ -27,8 +28,10 @@ export const Footer: React.FC<Props> = ({
       <nav className="filter" data-cy="Filter">
         <a
           href="#/"
-          onClick={() => setFilter('all')}
-          className={`filter__link${filter === 'all' ? ' selected' : ''}`}
+          onClick={() => setFilter(Filter.All)}
+          className={classNames('filter__link', {
+            selected: filter === Filter.All,
+          })}
           data-cy="FilterLinkAll"
         >
           All
@@ -36,8 +39,10 @@ export const Footer: React.FC<Props> = ({
 
         <a
           href="#/active"
-          onClick={() => setFilter('active')}
-          className={`filter__link${filter === 'active' ? ' selected' : ''}`}
+          onClick={() => setFilter(Filter.Active)}
+          className={classNames('filter__link', {
+            selected: filter === Filter.Active,
+          })}
           data-cy="FilterLinkActive"
         >
           Active
@@ -45,8 +50,10 @@ export const Footer: React.FC<Props> = ({
 
         <a
           href="#/completed"
-          onClick={() => setFilter('completed')}
-          className={`filter__link${filter === 'completed' ? ' selected' : ''}`}
+          onClick={() => setFilter(Filter.Completed)}
+          className={classNames('filter__link', {
+            selected: filter === Filter.Completed,
+          })}
           data-cy="FilterLinkCompleted"
         >
           Completed
